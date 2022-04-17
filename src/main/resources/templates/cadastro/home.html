@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Cadastro de Usuarios</title>
+	<link rel="icon" href="/js/favicon.ico">
+	
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css"/>
+	
+	<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+ 	<h1>Tela Inicial Cadastro de Usuario</h1>
+  
+	<div class="container my-2">
+		<a th:href="@{/paginacadastrousuario}" class="btn btn-primary btn-sm mb-3">Cadastrar Usuario</a>
+		<h1> Usuarios </h1>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Telefone</th>
+					<th>Email</th>
+					<th>Data Nascimento</th>
+					<th>CPF </th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="usuario : ${listaUsuarios}">
+					<td th:text="${usuario.nome}"></td>
+					<td th:text="${usuario.telefone}"></td>
+					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.dataNascimento}"></td>
+					<td th:text="${usuario.cpf}"></td>
+					<td>
+					<a th:href="@{/usuarioscadastrados/{id}(id=${usuario.id})}" class="btn btn-warning">Alterar</a> 
+					<a th:href="@{/excluirusuario/{id}(id=${usuario.id})}" class="btn btn-danger">Excluir</a>
+					</td>       
+				</tr>
+			</tbody>
+	
+		</table>	
+		
+	</div>
+
+</body>
+</html>
